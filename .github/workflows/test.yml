@@ -3,15 +3,8 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: database
-        ports:
-          - "3306:3306"
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    env:
+      PLANETSCALE_URL: ${{ secrets.PLANETSCALE_URL }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
