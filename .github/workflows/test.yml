@@ -13,4 +13,6 @@ jobs:
       - run: npm ci
       - run: node node.js
       - uses: denoland/setup-deno@v1
+        with:
+          deno-version: "1.34.0"
       - run: deno run -A deno.ts
